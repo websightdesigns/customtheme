@@ -18,6 +18,10 @@ To clone this project run the following command in the `/wp-content/themes/` dir
 
     git clone git@github.com:websightdesigns/customtheme.git
 
+Or, to specify the destination directory:
+
+    git clone git@github.com:websightdesigns/customtheme.git ./destination
+
 ## This Theme Ready Base Includes
 
 - Twitter Bootstrap 3.0.3
