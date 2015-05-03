@@ -1,0 +1,35 @@
+# git ignore
+_offline
+.htaccess
+
+# WordPress
+wp-config.php
+wp-content/uploads/*
+wp-content/upgrade/*
+wp-content/blogs.dir/
+wp-content/backup-db/
+wp-content/cache/
+wp-content/backups/
+*.log
+sitemap.xml
+sitemap.xml.gz
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+sftp-config.json
+sftp-config-*.json
+
+# Netbeans
+nbproject
+
+# Linux OS
+.swp.*
+
+# Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
