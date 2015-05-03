@@ -380,6 +380,18 @@ textarea.copytextarea {
     margin-top: 2em;
   }
 
+  .container .jumbotron {
+    margin-bottom: 1em;
+  }
+
+  .hentry {
+    margin: 0;
+  }
+
+  .entry-content {
+    margin-top: 1em;
+  }
+
   .well {
     margin-bottom: 2em;
   }
