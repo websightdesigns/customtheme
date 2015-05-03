@@ -429,7 +429,8 @@ textarea.copytextarea {
 /* 767px or smaller
 -------------------------------------------------- */
 @media (max-width: 767px) {
-  #primary {
+  #footer-sidebar-fullwidth-above,
+  #footer-sidebar-fullwidth-below {
     margin-bottom: 1em;
   }
   #main {

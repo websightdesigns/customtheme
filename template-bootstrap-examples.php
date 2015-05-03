@@ -35,7 +35,7 @@ get_header(); ?>
 
       <div class="embed-responsive embed-responsive-16by9">
         <!--[if lt IE 9]><script>document.createElement('video');</script><![endif]-->
-        <video class="embed-responsive-item" preload="none" controls="controls" poster="<?php echo ($checkwpurl == $wpurlprefix ? $wpurlprefix : ''); ?>/wp-content/uploads/2015/03/screenshot1.png">
+        <video class="embed-responsive-item" preload="none" controls="controls" poster="<?php echo get_template_directory_uri(); ?>/media/example.png">
           <source type="video/mp4" src="<?php echo get_template_directory_uri(); ?>/media/example.mp4" />
           <a href="<?php echo get_template_directory_uri(); ?>/media/example.mp4"><?php echo get_template_directory_uri(); ?>/media/example.mp4</a>
         </video>
@@ -43,8 +43,8 @@ get_header(); ?>
 
       <h2>Responsive Image</h2>
 
-      <a href="<?php echo ($checkwpurl == $wpurlprefix ? $wpurlprefix : ''); ?>/wp-content/uploads/2015/03/shutter.jpg" class="lightbox">
-        <img src="<?php echo ($checkwpurl == $wpurlprefix ? $wpurlprefix : ''); ?>/wp-content/uploads/2015/03/shutter.jpg" class="img-responsive" alt="splash">
+      <a href="<?php echo get_template_directory_uri(); ?>/img/examples/sunset.jpg" class="lightbox">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/examples/sunset.jpg" class="img-responsive" alt="splash">
       </a>
 
       <div class="clearfix"></div>
