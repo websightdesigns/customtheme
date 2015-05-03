@@ -7,9 +7,9 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header page-header">
+	<?php if( !is_front_page() ) { ?><header class="entry-header page-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	</header><!-- .entry-header --><?php } ?>
 
 	<?php if( is_page('Posts') ) { ?>
 	<ol class="breadcrumb">
@@ -18,7 +18,7 @@
 	</ol>
 	<?php } ?>
 
-	<div class="entry-content">
+	<div class="entry-content well well-sm">
 
 		<?php the_content(); ?>
 		<?php
