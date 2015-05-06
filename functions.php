@@ -152,7 +152,7 @@ function customtheme_scripts() {
 	);
 	$host_arr = explode('.', $_SERVER['HTTP_HOST']);
 	$current_tld = '.' . $host_arr[count($host_arr) - 1];
-	if ( in_array($current_tld, $tld_list) ) $hostname_match = true;
+	if ( $_SERVER['HTTP_HOST'] == 'localhost' || in_array($current_tld, $tld_list) ) $hostname_match = true;
 	else $hostname_match = false;
 
 	// Add the theme stylesheet
