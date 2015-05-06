@@ -46,9 +46,11 @@ Or, to specify the destination directory:
 
 - To set up prefixes and the theme name you can replace all instances of `customtheme` and `Custom Theme` with your own prefix and theme name.
 
-- In `wp-content/themes/customtheme/header.php` you will want to set the correct values of the meta tags for author, contact, and copyright. Currently the author name is set to John Doe and the contact e-mail address is set to johndoe@domain.com. You will want to update these to correct values based upon your needs, or delete them entirely if you have no need for such meta information to be included in your project.
+- In `wp-content/themes/customtheme/header.php` you will want to set the correct values of the meta tags for author, contact, and copyright, and set the variable at the top of the page to set the keywords which appear on every page. Currently the author name is set to John Doe and the contact e-mail address is set to johndoe@domain.com. You will want to update these to correct values based upon your needs, or delete them entirely if you have no need for such meta information to be included in your project.
 
 - In `wp-content/themes/customtheme/header.php` you will also see the meta tag keywords `permanent,keywords,go,here` which you will want to edit to contain any keywords you wish to appear on every page. Any tags you add to the page or post will also show up as keywords.
+
+- In `wp-content/themes/customtheme/header.php` you should set the `$global_keywords` variable at the top of the page to set up keywords which appear on every page.
 
 ## Contributing
 
