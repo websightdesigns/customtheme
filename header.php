@@ -6,6 +6,7 @@
  *
  * @package customtheme
  */
+$global_keywords = 'global,keywords,go,here';
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -37,7 +38,6 @@
 		}
 	?>" />
 	<meta name="keywords" content="<?php
-		$global_keywords = 'permanent,keywords,go,here';
 		if(is_single()) {
 			// list tags as keywords
 			$metatags = get_the_tags($post->ID);

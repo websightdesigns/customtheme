@@ -1,6 +1,7 @@
 # git ignore
 _offline
 .htaccess
+template-bootstrap-*
 
 # WordPress
 wp-config.php
