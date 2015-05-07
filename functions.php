@@ -254,18 +254,22 @@ add_filter('show_admin_bar', '__return_false');
  * removes the margin-top added to the html element
  */
 add_action('get_header', 'my_filter_head');
-function my_filter_head() {
-    remove_action('wp_head', '_admin_bar_bump_cb');
-}
+if ( ! function_exists( 'my_filter_head' ) ) :
+    function my_filter_head() {
+        remove_action('wp_head', '_admin_bar_bump_cb');
+    }
+endif;
 
 /**
  * Redirect to home page on logout
  */
 add_action('wp_logout','go_home');
-function go_home() {
-  wp_redirect( home_url() );
-  exit();
-}
+if ( ! function_exists( 'go_home' ) ) :
+    function go_home() {
+      wp_redirect( home_url() );
+      exit();
+    }
+endif;
 
 /**
  * Remove the excess markup from the <head> tag
@@ -286,25 +290,29 @@ remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 add_filter('pre_site_transient_update_core','remove_core_updates');
 add_filter('pre_site_transient_update_plugins','remove_core_updates');
 add_filter('pre_site_transient_update_themes','remove_core_updates');
-function remove_core_updates(){
-  global $wp_version;
-  return(object) array(
-    'last_checked' => time(),
-    'version_checked'=> $wp_version,
-    );
-}
+if ( ! function_exists( 'remove_core_updates' ) ) :
+    function remove_core_updates(){
+      global $wp_version;
+      return(object) array(
+        'last_checked' => time(),
+        'version_checked'=> $wp_version,
+        );
+    }
+endif;
 
 /**
 * Media Library: File type sections
 */
 add_filter( 'post_mime_types', 'modify_post_mime_types' );
-function modify_post_mime_types( $post_mime_types ) {
-  // select the mime type, here: 'application/pdf'
-  // then we define an array with the label values
-  $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
-  // then we return the $post_mime_types variable
-  return $post_mime_types;
-}
+if ( ! function_exists( 'modify_post_mime_types' ) ) :
+    function modify_post_mime_types( $post_mime_types ) {
+      // select the mime type, here: 'application/pdf'
+      // then we define an array with the label values
+      $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+      // then we return the $post_mime_types variable
+      return $post_mime_types;
+    }
+endif;
 
 /**
  * Fixing a style conflict between the Floating Publish Button plugin and Advanced Custom Fields
@@ -328,44 +336,53 @@ if ( is_plugin_active('floating-publish-button/index.php') ) {
  * Display comments count in custom column of the Users table
  */
 add_filter( 'manage_users_columns', 'customtheme_modify_user_table' );
-function customtheme_modify_user_table( $column ) {
-    $column['comments'] = 'Comments';
-    return $column;
-}
+if ( ! function_exists( 'customtheme_modify_user_table' ) ) :
+    function customtheme_modify_user_table( $column ) {
+        $column['comments'] = 'Comments';
+        return $column;
+    }
+endif;
+
 add_filter( 'manage_users_custom_column', 'customtheme_modify_user_table_row', 10, 3 );
-function customtheme_modify_user_table_row( $val, $column_name, $user_id ) {
-    $user = get_userdata( $user_id );
-    switch ($column_name) {
-        case 'comments' :
-     global $wpdb;
-     $sql_query = 'SELECT COUNT(comment_ID) FROM ' . $wpdb->comments. ' WHERE user_id = "' . $user_id . '"';
-     $count = $wpdb->get_var($sql_query);
-     return $count;
-     break;
-     default:
- }
- return $return;
-}
+if ( ! function_exists( 'customtheme_modify_user_table_row' ) ) :
+    function customtheme_modify_user_table_row( $val, $column_name, $user_id ) {
+        $user = get_userdata( $user_id );
+        switch ($column_name) {
+            case 'comments' :
+         global $wpdb;
+         $sql_query = 'SELECT COUNT(comment_ID) FROM ' . $wpdb->comments. ' WHERE user_id = "' . $user_id . '"';
+         $count = $wpdb->get_var($sql_query);
+         return $count;
+         break;
+         default:
+     }
+     return $return;
+    }
+endif;
+
 add_action( 'admin_head-users.php', 'customtheme_users_table_style' );
-function customtheme_users_table_style() {
-    ?>
-  <style>
-     .fixed .column-comments {
-       width: 7.5em;
-   }
+if ( ! function_exists( 'customtheme_users_table_style' ) ) :
+    function customtheme_users_table_style() {
+        ?><style>
+    .fixed .column-comments {
+        width: 7.5em;
+    }
 </style>
-<?php
-}
+    <?php
+    }
+endif;
 
 /**
  * Set up posts and comments columns in Users table to be sortable
  */
 add_filter( 'manage_users_sortable_columns', 'customtheme_sortable_user_table_column' );
-function customtheme_sortable_user_table_column( $columns ) {
-    $columns['posts'] = 'posts';
-    $columns['comments'] = 'comments';
-    return $columns;
-}
+if ( ! function_exists( 'customtheme_sortable_user_table_column' ) ) :
+    function customtheme_sortable_user_table_column( $columns ) {
+        $columns['posts'] = 'posts';
+        $columns['comments'] = 'comments';
+        return $columns;
+    }
+endif;
 
 /**
  * Set up the posts column in Users table to not be sortable
@@ -400,33 +417,39 @@ require_once('wp_bootstrap_navwalker.php');
  * Add 'active' class to active menu list item
  */
 add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
-function special_nav_class($classes, $item){
-    if( in_array('current-menu-item', $classes) ){
-        $classes[] = 'active ';
+if ( ! function_exists( 'special_nav_class' ) ) :
+    function special_nav_class($classes, $item){
+        if( in_array('current-menu-item', $classes) ){
+            $classes[] = 'active ';
+        }
+        return $classes;
     }
-    return $classes;
-}
+endif;
 
 /**
  * Remove the automatic '<p>' tags around '<button>' tags
  */
 add_filter('the_content', 'filter_ptags_on_buttons');
-function filter_ptags_on_buttons($content) {
-    $content = str_ireplace('</button></p>', '</button>', $content);
-    return str_ireplace('<p><button', '<button', $content);
-}
+if ( ! function_exists( 'filter_ptags_on_buttons' ) ) :
+    function filter_ptags_on_buttons($content) {
+        $content = str_ireplace('</button></p>', '</button>', $content);
+        return str_ireplace('<p><button', '<button', $content);
+    }
+endif;
 
 /**
  * Remove unwanted '<br>' tags from inside of '<form>' tags
  */
 add_filter('the_content', 'remove_bad_br_tags');
-function remove_bad_br_tags($content) {
-    $content = str_ireplace("</label>\n<br />", "</label>", $content);
-    $content = str_ireplace("</label><br />", "</label>", $content);
-    $content = str_ireplace("</button>\n<br />", "</button>", $content);
-    $content = str_ireplace("</button><br />", "</button>", $content);
-    return $content;
-}
+if ( ! function_exists( 'remove_bad_br_tags' ) ) :
+    function remove_bad_br_tags($content) {
+        $content = str_ireplace("</label>\n<br />", "</label>", $content);
+        $content = str_ireplace("</label><br />", "</label>", $content);
+        $content = str_ireplace("</button>\n<br />", "</button>", $content);
+        $content = str_ireplace("</button><br />", "</button>", $content);
+        return $content;
+    }
+endif;
 
 /* ******************************************************************** */
 /*                     ADVANCED CUSTOM FIELDS PRO                       */
@@ -438,113 +461,114 @@ function remove_bad_br_tags($content) {
 
 if( function_exists('register_field_group') ):
 
-    register_field_group(array (
-        'key' => 'group_54e178c148666',
-        'title' => 'Slideshow',
-        'fields' => array (
-            array (
-                'key' => 'field_54e1799805d41',
-                'label' => 'Slideshow',
-                'name' => 'slideshow',
-                'prefix' => '',
-                'type' => 'repeater',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array (
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
+    register_field_group(
+        array(
+            'key' => 'group_54e178c148666',
+            'title' => 'Slideshow',
+            'fields' => array (
+                array (
+                    'key' => 'field_54e1799805d41',
+                    'label' => 'Slideshow',
+                    'name' => 'slideshow',
+                    'prefix' => '',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array (
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
                     ),
-                'min' => '',
-                'max' => '',
-                'layout' => 'table',
-                'button_label' => 'Add Row',
-                'sub_fields' => array (
-                    array (
-                        'key' => 'field_54e179ab05d42',
-                        'label' => 'Image',
-                        'name' => 'image',
-                        'prefix' => '',
-                        'type' => 'image',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                          ),
-                        'return_format' => 'url',
-                        'preview_size' => 'thumbnail',
-                        'library' => 'all',
-                       ),
-                    array (
-                        'key' => 'field_54e179c405d43',
-                        'label' => 'Title',
-                        'name' => 'title',
-                        'prefix' => '',
-                        'type' => 'text',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                          ),
-                        'default_value' => '',
-                        'placeholder' => 'Enter the title',
-                        'prepend' => '',
-                        'append' => '',
-                        'maxlength' => '',
-                        'readonly' => 0,
-                        'disabled' => 0,
-                       ),
-                    array (
-                        'key' => 'field_54e179cf05d44',
-                        'label' => 'Description',
-                        'name' => 'description',
-                        'prefix' => '',
-                        'type' => 'textarea',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                          ),
-                        'default_value' => '',
-                        'placeholder' => 'Enter the description',
-                        'maxlength' => '',
-                        'rows' => '',
-                        'new_lines' => 'wpautop',
-                        'readonly' => 0,
-                        'disabled' => 0,
-                       ),
+                    'min' => '',
+                    'max' => '',
+                    'layout' => 'table',
+                    'button_label' => 'Add Row',
+                    'sub_fields' => array (
+                        array (
+                            'key' => 'field_54e179ab05d42',
+                            'label' => 'Image',
+                            'name' => 'image',
+                            'prefix' => '',
+                            'type' => 'image',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array (
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'return_format' => 'url',
+                            'preview_size' => 'thumbnail',
+                            'library' => 'all',
+                        ),
+                        array (
+                            'key' => 'field_54e179c405d43',
+                            'label' => 'Title',
+                            'name' => 'title',
+                            'prefix' => '',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array (
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => 'Enter the title',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                            'readonly' => 0,
+                            'disabled' => 0,
+                        ),
+                        array (
+                            'key' => 'field_54e179cf05d44',
+                            'label' => 'Description',
+                            'name' => 'description',
+                            'prefix' => '',
+                            'type' => 'textarea',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array (
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => 'Enter the description',
+                            'maxlength' => '',
+                            'rows' => '',
+                            'new_lines' => 'wpautop',
+                            'readonly' => 0,
+                            'disabled' => 0,
+                        ),
                     ),
-),
-),
-'location' => array (
- array (
-    array (
-       'param' => 'page',
-       'operator' => '==',
-       'value' => get_page_by_title( "Bootstrap Carousel" )->ID,
-       ),
-    ),
- ),
-'menu_order' => 0,
-'position' => 'normal',
-'style' => 'default',
-'label_placement' => 'top',
-'instruction_placement' => 'label',
-'hide_on_screen' => array (
- 0 => 'the_content',
- ),
-));
-
+                ),
+            ),
+            'location' => array (
+                array (
+                    array (
+                       'param' => 'page',
+                       'operator' => '==',
+                       'value' => get_page_by_title( "Bootstrap Carousel" )->ID,
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => array (
+                0 => 'the_content',
+            ),
+        )
+    );
 endif;
 
 /* ******************************************************************** */
