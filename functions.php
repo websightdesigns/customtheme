@@ -146,13 +146,15 @@ function customtheme_widgets_init() {
  */
 add_action( 'wp_enqueue_scripts', 'customtheme_scripts' );
 function customtheme_scripts() {
+	$host_parts = explode(":", $_SERVER['HTTP_HOST']);
+	$current_host = $host_parts[0];
 	$tld_list = array(
 		'.localhost',
 		'.dev'
 	);
-	$host_arr = explode('.', $_SERVER['HTTP_HOST']);
+	$host_arr = explode('.', $current_host);
 	$current_tld = '.' . $host_arr[count($host_arr) - 1];
-	if ( $_SERVER['HTTP_HOST'] == 'localhost' || in_array($current_tld, $tld_list) ) $hostname_match = true;
+	if ( $current_host == 'localhost' || in_array($current_tld, $tld_list) ) $hostname_match = true;
 	else $hostname_match = false;
 
 	// Add the theme stylesheet
