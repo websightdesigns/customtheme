@@ -346,7 +346,14 @@ textarea.copytextarea {
 /* 992px or larger
 -------------------------------------------------- */
 @media (min-width: 992px) {
+    .entry-content {
+        margin-bottom: 2em !important;
+    }
 
+    #primary,
+    #secondary {
+      margin-bottom: 1em !important;
+    }
 }
 
 /* 768px or larger
@@ -380,6 +387,10 @@ textarea.copytextarea {
         margin-top: 1em;
     }
 
+    .well {
+        margin-bottom: 1em;
+    }
+
     .container .jumbotron {
         margin-bottom: 1em;
     }
@@ -392,10 +403,6 @@ textarea.copytextarea {
         margin-top: 1em;
     }
 
-    .well {
-        margin-bottom: 1em;
-    }
-
     #footer-widgets {
         margin-bottom: 1em;
     }
@@ -404,6 +411,10 @@ textarea.copytextarea {
 /* 991px or smaller
 -------------------------------------------------- */
 @media (max-width: 991px) {
+    .main-row {
+        margin-bottom: 1em;
+    }
+
     .content-blog article {
         display: block;
         clear: both;
@@ -450,7 +461,6 @@ textarea.copytextarea {
         margin-bottom: 1em;
     }
     #main {
-        margin-top: 1em;
         display: inline-block;
     }
     .site-main {
@@ -465,6 +475,12 @@ textarea.copytextarea {
     .well,
     .footer-sidebar {
         margin-bottom: 1em;
+    }
+    .hentry {
+      margin: 0 0 0.5em;
+    }
+    .entry-content {
+        margin-bottom: 2em;
     }
 }
 
