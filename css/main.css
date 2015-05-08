@@ -346,10 +346,6 @@ textarea.copytextarea {
 /* 992px or larger
 -------------------------------------------------- */
 @media (min-width: 992px) {
-    .entry-content {
-        margin-bottom: 2em !important;
-    }
-
     #primary,
     #secondary {
       margin-bottom: 1em !important;
@@ -406,6 +402,10 @@ textarea.copytextarea {
     #footer-widgets {
         margin-bottom: 1em;
     }
+
+    #footer-sidebar4 .well {
+        margin-bottom: 2em !important;
+    }
 }
 
 /* 991px or smaller
@@ -452,6 +452,9 @@ textarea.copytextarea {
 /* 767px or smaller
 -------------------------------------------------- */
 @media (max-width: 767px) {
+    body > .container {
+      padding: 85px 15px 0;
+    }
     body.archive #primary,
     body.single #primary {
         margin-bottom: 2em;
@@ -481,6 +484,10 @@ textarea.copytextarea {
     }
     .entry-content {
         margin-bottom: 2em;
+    }
+    .jumbotron {
+      padding: 15px;
+      margin-bottom: 15px;
     }
 }
 

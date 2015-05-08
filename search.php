@@ -11,7 +11,7 @@ get_header(); ?>
 		<div class="well">
 			<main id="main" class="site-main" role="main">
 
-			<?php if ( have_posts() ) : ?>
+			<?php if ( have_posts() && strlen( trim(get_search_query()) ) != 0 ) : ?>
 
 				<header class="page-header">
 					<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'customtheme' ), '<span>' . get_search_query() . '</span>' ); ?></h1>

@@ -389,6 +389,34 @@ if ( ! function_exists( 'customtheme_sortable_user_table_column' ) ) :
     }
 endif;
 
+/*
+ * Change the search URL to pretty format
+ */
+if ( ! function_exists( 'special_nav_class' ) ) :
+    add_action( 'template_redirect', 'customtheme_change_search_url_rewrite' );
+    function customtheme_change_search_url_rewrite() {
+        if ( get_option('permalink_structure') != '' && is_search() && ! empty( $_GET['s'] ) ) {
+            wp_redirect( home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) );
+            exit();
+        }
+    }
+endif;
+
+/*
+ * Show no posts on empty search
+ */
+if ( ! function_exists( 'special_nav_class' ) ) :
+    add_filter('pre_get_posts','customtheme_search_filter');
+    function customtheme_search_filter($query) {
+        // If 's' request variable is set but empty
+        if (isset($_GET['s']) && empty($_GET['s']) && $query->is_main_query()){
+            $query->is_search = true;
+            $query->is_home = false;
+        }
+        return $query;
+    }
+endif;
+
 /**
  * Set up the posts column in Users table to not be sortable
  */
