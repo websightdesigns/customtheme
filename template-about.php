@@ -71,7 +71,7 @@ get_header(); ?>
             <p class="text-muted"><a href="https://github.com/websightdesigns/customtheme" target="_blank">https://github.com/websightdesigns/customtheme</a></p>
             <h3>Clone the Repository</h3>
             <div id="copy-wrapper">
-              <span class="code text-muted copytext">git clone git@github.com:websightdesigns/customtheme.git</span>
+              <span class="code text-muted copytext">git clone https://github.com/websightdesigns/customtheme.git</span>
             </div>
             <h3>Contributing</h3>
             <p>Customtheme is an open source project so if you'd like to contribute in any way simply submit a pull request via Github.</p>
