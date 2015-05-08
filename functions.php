@@ -149,7 +149,12 @@ if ( ! function_exists( 'customtheme_widgets_init' ) ) :
 add_action( 'wp_enqueue_scripts', 'customtheme_scripts' );
 if ( ! function_exists( 'customtheme_scripts' ) ) :
     function customtheme_scripts() {
-        $host_parts = explode(":", $_SERVER['HTTP_HOST']);
+        $port_pos = strpos($_SERVER['HTTP_HOST'], ":");
+        if($port_pos === false) {
+            $host_parts = array($_SERVER['HTTP_HOST']);
+        } else {
+            $host_parts = explode(":", $_SERVER['HTTP_HOST']);
+        }
         $current_host = $host_parts[0];
         $tld_list = array(
             '.localhost',

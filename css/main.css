@@ -377,7 +377,7 @@ textarea.copytextarea {
     .container .jumbotron,
     #primary > .well,
     #secondary > .well {
-        margin-top: 2em;
+        margin-top: 1em;
     }
 
     .container .jumbotron {
@@ -393,7 +393,7 @@ textarea.copytextarea {
     }
 
     .well {
-        margin-bottom: 2em;
+        margin-bottom: 1em;
     }
 
     #footer-widgets {
