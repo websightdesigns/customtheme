@@ -16,11 +16,11 @@ This web application is intended to be cloned and placed on a web server running
 
 To clone this project run the following command in the `/wp-content/themes/` directory:
 
-    git clone git@github.com:websightdesigns/customtheme.git
+    git clone https://github.com/websightdesigns/customtheme.git
 
 Or, to specify the destination directory:
 
-    git clone git@github.com:websightdesigns/customtheme.git ./destination
+    git clone https://github.com/websightdesigns/customtheme.git ./destination
 
 ## This Theme Ready Base Includes
 
