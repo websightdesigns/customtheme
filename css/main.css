@@ -453,7 +453,7 @@ textarea.copytextarea {
 -------------------------------------------------- */
 @media (max-width: 767px) {
     body > .container {
-      padding: 85px 15px 0;
+        padding: 85px 15px 0;
     }
     body.archive #primary,
     body.single #primary {
