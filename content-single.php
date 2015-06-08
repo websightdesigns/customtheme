@@ -19,7 +19,7 @@
 			$category_url = esc_url( get_category_link( $category[0]->term_id ) );
 		?>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo get_bloginfo('wpurl').'/'; ?>">Home</a></li>
+			<li><a href="<?php echo site_url().'/'; ?>">Home</a></li>
 			<li><a href="<?php echo $category_url; ?>"><?php echo $category[0]->cat_name; ?></a></li>
 			<li><?php echo get_the_title(); ?></li>
 		</ol>

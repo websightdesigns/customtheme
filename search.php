@@ -18,7 +18,7 @@ get_header(); ?>
 				</header><!-- .page-header -->
 
 				<ol class="breadcrumb">
-					<li><a href="<?php echo get_bloginfo('wpurl').'/'; ?>">Home</a></li>
+					<li><a href="<?php echo site_url().'/'; ?>">Home</a></li>
 					<li class="active">Search Results</li>
 				</ol>
 

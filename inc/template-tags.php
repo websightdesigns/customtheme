@@ -132,7 +132,7 @@ function geturl($pagetitle) {
 	$page = get_page_by_title( $pagetitle );
 	$post = get_post($page->ID);
 	$slug = $post->post_name;
-	return get_bloginfo('wpurl') . '/'. $slug . '/';
+	return site_url() . '/'. $slug . '/';
 }
 endif;
 

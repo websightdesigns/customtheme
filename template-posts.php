@@ -92,8 +92,8 @@ get_header(); ?>
         'end_size' => '2',
         'show_all' => false,
         'prev_next' => false,
-        'prev_text' => __('&#8592; Previous'),
-        'next_text' => __('Next &#8594;'),
+        'prev_text' => __('&#8592; Previous', 'customtheme'),
+        'next_text' => __('Next &#8594;', 'customtheme'),
         'type' => 'array'
       ) );
       ?>
@@ -106,10 +106,10 @@ get_header(); ?>
               } elseif(strpos($value, 'prev') !== false || strpos($value, 'next') !== false) {
                 ?><li><?php echo $value; ?></li><?php
               } else {
-                $page_url = get_bloginfo('wpurl').'/'.$post_name.'/page/'.strip_tags($value).'/';
-                $request_uri = get_bloginfo('wpurl').$_SERVER['REQUEST_URI'];
-                if($request_uri == get_bloginfo('wpurl').'/'.$post_name.'/') {
-                  $request_uri = get_bloginfo('wpurl').'/'.$post_name.'/page/1/';
+                $page_url = site_url().'/'.$post_name.'/page/'.strip_tags($value).'/';
+                $request_uri = site_url().$_SERVER['REQUEST_URI'];
+                if($request_uri == site_url().'/'.$post_name.'/') {
+                  $request_uri = site_url().'/'.$post_name.'/page/1/';
                 }
                 ?>
                 <li<?php if($current_page == strip_tags($value)) echo ' class="active"'; ?>>

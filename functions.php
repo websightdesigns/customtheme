@@ -313,7 +313,7 @@ if ( ! function_exists( 'modify_post_mime_types' ) ) :
     function modify_post_mime_types( $post_mime_types ) {
       // select the mime type, here: 'application/pdf'
       // then we define an array with the label values
-      $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+      $post_mime_types['application/pdf'] = array( __( 'PDFs', 'customtheme' ), __( 'Manage PDFs', 'customtheme' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
       // then we return the $post_mime_types variable
       return $post_mime_types;
     }
@@ -681,7 +681,7 @@ function customtheme_fix_hashed_comment($commentdata) {
 add_action('comment_post', 'customtheme_check_comment_spam_trap');
 function customtheme_check_comment_spam_trap($comment_id, $approved='null') {
     // first check http_referer
-    $siteURL = str_ireplace('www.', '', parse_url(get_bloginfo('url'), PHP_URL_HOST));
+    $siteURL = str_ireplace('www.', '', parse_url(home_url(), PHP_URL_HOST));
     if(!stripos($_SERVER['HTTP_REFERER'], $siteURL)) {
         wp_die('There was an error.', 'Error');
         exit;
@@ -703,7 +703,7 @@ function customtheme_check_comment_spam_trap($comment_id, $approved='null') {
 add_action('registration_errors', 'customtheme_check_register_spam_trap', 10, 3);
 function customtheme_check_register_spam_trap($errors, $sanitized_user_login, $user_email) {
     // first check http_referer
-    $siteURL = str_ireplace('www.', '', parse_url(get_bloginfo('url'), PHP_URL_HOST));
+    $siteURL = str_ireplace('www.', '', parse_url(home_url(), PHP_URL_HOST));
     if(!stripos($_SERVER['HTTP_REFERER'], $siteURL)) {
         wp_die('There was an error.', 'Error');
         exit;

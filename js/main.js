@@ -7,6 +7,31 @@
 // jquery
 jQuery(function($) {
 
+	// get the page id
+	var bodyclass = $('body').prop('class').split(' ');
+	$.each(bodyclass, function( index, value ) {
+		if( value.substring(0, 8) == "page-id-" ) {
+			pageid = value.replace( "page-id-", "" );
+		}
+	});
+
+	// media element test
+	$('.video-links a').on('click', function(e) {
+
+		var loadVideoURL = $(this).data('url');
+		var playerId = $(this).parent().parent().prop('id').replace('video-thumbs-', '');
+
+		// console.log('loadVideoURL', loadVideoURL);
+		// console.log('pageid', pageid);
+		// console.log('playerId', playerId);
+
+		var player = $('#video-' + pageid + '-' + playerId)[0].player.media;
+		player.setSrc(loadVideoURL);
+		player.play();
+
+		e.preventDefault();
+	});
+
 	// set a variable with the window width
 	var windowWidth = $(window).width();
 

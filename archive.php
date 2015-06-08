@@ -14,6 +14,8 @@ get_header(); ?>
 	if( is_category() ) {
 		$category = get_the_category();
 		$category_slug = $category[0]->category_nicename;
+	} else {
+		$category_slug = null;
 	}
 
 	// get all categories into an array
@@ -97,7 +99,7 @@ get_header(); ?>
 
 				<?php if( is_category() || is_month() || is_day() || is_year() || is_author() ) { ?>
 					<ol class="breadcrumb">
-						<li><a href="<?php echo get_bloginfo('wpurl').'/'; ?>">Home</a></li>
+						<li><a href="<?php echo site_url().'/'; ?>">Home</a></li>
 						<li class="active"><?php
 							if( is_category() ) {
 								echo single_cat_title();
@@ -146,8 +148,8 @@ get_header(); ?>
 						'end_size' => '2',
 						'show_all' => false,
 						'prev_next' => false,
-						'prev_text' => __('&#8592; Previous'),
-						'next_text' => __('Next &#8594;'),
+						'prev_text' => __('&#8592; Previous', 'customtheme'),
+						'next_text' => __('Next &#8594;', 'customtheme'),
 						'type' => 'array'
 					) );
 					?>
@@ -161,7 +163,7 @@ get_header(); ?>
 										} elseif(strpos($value, 'prev') !== false || strpos($value, 'next') !== false) {
 											?><li><?php echo $value; ?></li><?php
 										} else {
-											$get_wpurl = get_bloginfo('wpurl');
+											$get_wpurl = site_url();
 
 											if( strpos( substr($get_wpurl, -strlen("/wordpress")), "/wordpress" ) !== false ) {
 												$get_wpurl = str_replace( "/wordpress", '', $get_wpurl );

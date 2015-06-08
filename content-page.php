@@ -13,7 +13,7 @@
 
 	<?php if( is_page('Posts') ) { ?>
 	<ol class="breadcrumb">
-		<li><a href="<?php echo get_bloginfo('wpurl').'/'; ?>">Home</a></li>
+		<li><a href="<?php echo site_url().'/'; ?>">Home</a></li>
 		<li class="active">Posts</li>
 	</ol>
 	<?php } ?>
