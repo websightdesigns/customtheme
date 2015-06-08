@@ -292,18 +292,18 @@ remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 /**
 * Disable update notifications
 */
-add_filter('pre_site_transient_update_core','remove_core_updates');
-add_filter('pre_site_transient_update_plugins','remove_core_updates');
-add_filter('pre_site_transient_update_themes','remove_core_updates');
-if ( ! function_exists( 'remove_core_updates' ) ) :
-    function remove_core_updates(){
-      global $wp_version;
-      return(object) array(
-        'last_checked' => time(),
-        'version_checked'=> $wp_version,
-        );
-    }
-endif;
+// add_filter('pre_site_transient_update_core','remove_core_updates');
+// add_filter('pre_site_transient_update_plugins','remove_core_updates');
+// add_filter('pre_site_transient_update_themes','remove_core_updates');
+// if ( ! function_exists( 'remove_core_updates' ) ) :
+//     function remove_core_updates(){
+//       global $wp_version;
+//       return(object) array(
+//         'last_checked' => time(),
+//         'version_checked'=> $wp_version,
+//         );
+//     }
+// endif;
 
 /**
 * Media Library: File type sections
