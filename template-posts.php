@@ -37,41 +37,41 @@ get_header(); ?>
       );
       $recent_posts = get_posts( $args );
       if($recent_posts) {
-      foreach ( $recent_posts as $post ):
-        setup_postdata( $post );
-        ?>
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-          <div class="blog-post-thumbnail">
-            <?php
-              // Page thumbnail and title.
-              if ( has_post_thumbnail() ) {
-                the_post_thumbnail();
-              } else {
-                ?><img src="<?php echo get_template_directory_uri(); ?>/img/link-icon.png" class="attachment-post-thumbnail wp-post-image" alt=""><?php
-              }
-            ?>
-          </div>
-
-          <div class="blog-post-content">
-            <?php the_title( '<header class="entry-header"><h3 class="entry-link-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3></header>' ); ?>
-            <p class="postdate"><?php the_date( 'F j, Y' ); ?></p>
-            <div class="entry-content">
-            <p><?php
-              echo get_the_excerpt();
-              ?> <span class="readmore-link"><a href="<?php echo esc_url( get_permalink() ) ?>" class="readmore" rel="bookmark">READ&nbsp;&raquo;</a></span><?php
-            ?></p><?php
-                wp_link_pages( array(
-                  'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'customtheme' ) . '</span>',
-                  'after'       => '</div>',
-                  'link_before' => '<span>',
-                  'link_after'  => '</span>',
-                ) );
+        foreach ( $recent_posts as $post ):
+          setup_postdata( $post );
+          ?>
+          <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <div class="blog-post-thumbnail">
+              <?php
+                // Page thumbnail and title.
+                if ( has_post_thumbnail() ) {
+                  the_post_thumbnail();
+                } else {
+                  ?><img src="<?php echo get_template_directory_uri(); ?>/img/link-icon.png" class="attachment-post-thumbnail wp-post-image" alt=""><?php
+                }
               ?>
             </div>
-          </div><!-- .entry-content -->
-        </article>
-      <?php endforeach;
-      wp_reset_postdata();
+
+            <div class="blog-post-content">
+              <?php the_title( '<header class="entry-header"><h3 class="entry-link-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3></header>' ); ?>
+              <p class="postdate"><?php the_date( 'F j, Y' ); ?></p>
+              <div class="entry-content">
+              <p><?php
+                echo get_the_excerpt();
+                ?> <span class="readmore-link"><a href="<?php echo esc_url( get_permalink() ) ?>" class="readmore" rel="bookmark">READ&nbsp;&raquo;</a></span><?php
+              ?></p><?php
+                  wp_link_pages( array(
+                    'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'customtheme' ) . '</span>',
+                    'after'       => '</div>',
+                    'link_before' => '<span>',
+                    'link_after'  => '</span>',
+                  ) );
+                ?>
+              </div>
+            </div><!-- .entry-content -->
+          </article>
+        <?php endforeach;
+        wp_reset_postdata();
       }
       // Loop through the posts again to set up pagination
       $args = array(
@@ -102,22 +102,24 @@ get_header(); ?>
       <div class="pagination-container">
         <?php
           function paginationLinks($paginate_links, $current_page, $post_name) {
-            foreach ($paginate_links AS $key => $value) {
-              if(strpos($value, 'dots') !== false) {
-                ?><li><?php echo $value; ?></li><?php
-              } elseif(strpos($value, 'prev') !== false || strpos($value, 'next') !== false) {
-                ?><li><?php echo $value; ?></li><?php
-              } else {
-                $page_url = site_url().'/'.$post_name.'/page/'.strip_tags($value).'/';
-                $request_uri = site_url().$_SERVER['REQUEST_URI'];
-                if($request_uri == site_url().'/'.$post_name.'/') {
-                  $request_uri = site_url().'/'.$post_name.'/page/1/';
+            if($paginate_links) {
+              foreach ($paginate_links AS $key => $value) {
+                if(strpos($value, 'dots') !== false) {
+                  ?><li><?php echo $value; ?></li><?php
+                } elseif(strpos($value, 'prev') !== false || strpos($value, 'next') !== false) {
+                  ?><li><?php echo $value; ?></li><?php
+                } else {
+                  $page_url = site_url().'/'.$post_name.'/page/'.strip_tags($value).'/';
+                  $request_uri = site_url().$_SERVER['REQUEST_URI'];
+                  if($request_uri == site_url().'/'.$post_name.'/') {
+                    $request_uri = site_url().'/'.$post_name.'/page/1/';
+                  }
+                  ?>
+                  <li<?php if($current_page == strip_tags($value)) echo ' class="active"'; ?>>
+                  <a href="<?php echo ( $page_url == $request_uri ? '#' : $page_url ); ?>"><?php echo strip_tags($value); ?></a>
+                  </li>
+                  <?php
                 }
-                ?>
-                <li<?php if($current_page == strip_tags($value)) echo ' class="active"'; ?>>
-                <a href="<?php echo ( $page_url == $request_uri ? '#' : $page_url ); ?>"><?php echo strip_tags($value); ?></a>
-                </li>
-                <?php
               }
             }
           }
