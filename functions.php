@@ -492,7 +492,7 @@ endif;
  * Create field group for the Bootstrap Carousel page template
  */
 
-if( function_exists('register_field_group') && get_page_by_title( "Bootstrap Carousel" )->ID ):
+if( function_exists('register_field_group') && get_page_by_title( "Bootstrap Carousel" ) ):
 
     register_field_group(
         array(
