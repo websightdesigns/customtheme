@@ -36,6 +36,7 @@ get_header(); ?>
         'post_status' => 'publish'
       );
       $recent_posts = get_posts( $args );
+      if($recent_posts) {
       foreach ( $recent_posts as $post ):
         setup_postdata( $post );
         ?>
@@ -71,6 +72,7 @@ get_header(); ?>
         </article>
       <?php endforeach;
       wp_reset_postdata();
+      }
       // Loop through the posts again to set up pagination
       $args = array(
         'numberposts' => -1,
