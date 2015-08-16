@@ -178,11 +178,11 @@ jQuery(function($) {
 	});
 
 	// do not scroll to top of page when clicking # hrefs
-	$('a').on('click', function(e) {
-		if( $(this).prop('href') == '#' ) {
-			e.preventDefault();
-		}
-	});
+	// $('a').on('click', function(e) {
+	// 	if( $(this).prop('href') == '#' ) {
+	// 		e.preventDefault();
+	// 	}
+	// });
 
 	// open external links in a new window
 	var h = window.location.host.toLowerCase();
