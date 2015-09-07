@@ -544,6 +544,7 @@ endif;
  * Create field group for the Bootstrap Carousel page template
  */
 
+<<<<<<< HEAD
 if( is_plugin_active('advanced-custom-fields-pro/acf.php') ) {
 
   if( function_exists('register_field_group') ):
@@ -659,6 +660,119 @@ if( is_plugin_active('advanced-custom-fields-pro/acf.php') ) {
   endif;
 
 }
+=======
+if( function_exists('register_field_group') && get_page_by_title( "Bootstrap Carousel" ) ):
+
+    register_field_group(
+        array(
+            'key' => 'group_54e178c148666',
+            'title' => 'Slideshow',
+            'fields' => array (
+                array (
+                    'key' => 'field_54e1799805d41',
+                    'label' => 'Slideshow',
+                    'name' => 'slideshow',
+                    'prefix' => '',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array (
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'min' => '',
+                    'max' => '',
+                    'layout' => 'table',
+                    'button_label' => 'Add Row',
+                    'sub_fields' => array (
+                        array (
+                            'key' => 'field_54e179ab05d42',
+                            'label' => 'Image',
+                            'name' => 'image',
+                            'prefix' => '',
+                            'type' => 'image',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array (
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'return_format' => 'url',
+                            'preview_size' => 'thumbnail',
+                            'library' => 'all',
+                        ),
+                        array (
+                            'key' => 'field_54e179c405d43',
+                            'label' => 'Title',
+                            'name' => 'title',
+                            'prefix' => '',
+                            'type' => 'text',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array (
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => 'Enter the title',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                            'readonly' => 0,
+                            'disabled' => 0,
+                        ),
+                        array (
+                            'key' => 'field_54e179cf05d44',
+                            'label' => 'Description',
+                            'name' => 'description',
+                            'prefix' => '',
+                            'type' => 'textarea',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array (
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => 'Enter the description',
+                            'maxlength' => '',
+                            'rows' => '',
+                            'new_lines' => 'wpautop',
+                            'readonly' => 0,
+                            'disabled' => 0,
+                        ),
+                    ),
+                ),
+            ),
+            'location' => array (
+                array (
+                    array (
+                       'param' => 'page',
+                       'operator' => '==',
+                       'value' => get_page_by_title( "Bootstrap Carousel" )->ID,
+                    ),
+                ),
+            ),
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => array (
+                0 => 'the_content',
+            ),
+        )
+    );
+endif;
+>>>>>>> 58b2faa3fd3f79808effbcf89eb361764f090e9b
 
 /* ******************************************************************** */
 /*                             SPAM TRAP                                */
