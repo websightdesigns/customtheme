@@ -2,18 +2,13 @@
 _offline
 .htaccess
 template-bootstrap-*
+css/main.min.css.map
 
-# WordPress
-wp-config.php
-wp-content/uploads/*
-wp-content/upgrade/*
-wp-content/blogs.dir/
-wp-content/backup-db/
-wp-content/cache/
-wp-content/backups/
-*.log
-sitemap.xml
-sitemap.xml.gz
+# Prepros
+prepros.cfg
+
+# Vafpress
+vafpress-framework/
 
 # Sublime Text
 *.sublime-project
