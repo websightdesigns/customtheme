@@ -8,6 +8,7 @@ css/main.min.css.map
 prepros.cfg
 
 # Vafpress
+vafpress/
 vafpress-framework/
 
 # Sublime Text
