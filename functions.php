@@ -6,44 +6,9 @@
  */
 
 /**
- * Include plugin.php
+ * Include plugin.php, used to check if plugins are currently activated
  */
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-/**
- * Include vafpress-framework
- * @url https://github.com/vafour/vafpress-framework
- */
-// require_once TEMPLATEPATH . '/vafpress-framework/bootstrap.php';
-
-// function customtheme_vafpress_options() {
-// 	// initialize the object
-// 	$theme_options = new VP_Option( array(
-// 		// set it to TRUE if you don't want the option values to be saved (in your theme demo, perhaps)
-// 		'is_dev_mode'           => false,
-// 		// the name for the settings in the database
-// 		'option_key'            => 'vpt_option',
-// 		// the slug of your options page
-// 		'page_slug'             => 'vpt_option',
-// 		// path to the template file or the array
-// 		'template'              => get_template_directory() . '/vafpress/options-template.php',
-// 		// parent menu page
-// 		'menu_page'             => 'themes.php',
-// 		// decides whether to automatically name menus or not
-// 		'use_auto_group_naming' => true,
-// 		// show (by default) or hide the "Export/Import" page
-// 		'use_exim_menu'         => true,
-// 		// minimum user role to view the options panel
-// 		'minimum_role'          => 'edit_theme_options',
-// 		// type of the layout (fixed by default)
-// 		'layout'                => 'fixed',
-// 		// title of the options page
-// 		'page_title'            => __( 'Theme Options', 'customtheme' ),
-// 		// title of the main menu item
-// 		'menu_label'            => __( 'Theme Options', 'customtheme' ),
-// 	));
-// }
-// add_action( 'after_setup_theme', 'customtheme_vafpress_options' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -357,20 +322,20 @@ endif;
 /**
  * Fixing a style conflict between the Floating Publish Button plugin and Advanced Custom Fields
  */
-if ( is_plugin_active('floating-publish-button/index.php') ) {
-	if( is_plugin_active('advanced-custom-fields-pro/acf.php') || is_plugin_active('advanced-custom-fields/acf.php') ) {
-		add_action( 'admin_head-post.php', 'edit_post_style' );
-		function edit_post_style() {
-			?>
-			<style>
-			   .metabox-holder .postbox-container .empty-container {
-				  border: 0 !important;
-			  }
-		  </style>
-		  <?php
-	  }
-  }
-}
+// if ( is_plugin_active('floating-publish-button/index.php') ) {
+// 	if( is_plugin_active('advanced-custom-fields-pro/acf.php') || is_plugin_active('advanced-custom-fields/acf.php') ) {
+// 		add_action( 'admin_head-post.php', 'edit_post_style' );
+// 		function edit_post_style() {
+// 			echo '
+// 			<style>
+// 			   .metabox-holder .postbox-container .empty-container {
+// 				  border: 0 !important;
+// 			  }
+// 		  </style>
+// 		  ';
+// 	  }
+//   }
+// }
 
 /*
  * Change the search URL to pretty format
@@ -779,3 +744,42 @@ if( is_plugin_active('advanced-custom-fields-pro/acf.php') ) {
 //     }
 //     return $errors;
 // }
+
+/* ******************************************************************** */
+/*                            THEME OPTIONS                             */
+/* ******************************************************************** */
+
+/**
+ * Include vafpress-framework
+ * @url https://github.com/vafour/vafpress-framework
+ */
+// require_once TEMPLATEPATH . '/vafpress-framework/bootstrap.php';
+
+// function customtheme_vafpress_options() {
+// 	// initialize the object
+// 	$theme_options = new VP_Option( array(
+// 		// set it to TRUE if you don't want the option values to be saved (in your theme demo, perhaps)
+// 		'is_dev_mode'           => false,
+// 		// the name for the settings in the database
+// 		'option_key'            => 'vpt_option',
+// 		// the slug of your options page
+// 		'page_slug'             => 'vpt_option',
+// 		// path to the template file or the array
+// 		'template'              => get_template_directory() . '/vafpress/options-template.php',
+// 		// parent menu page
+// 		'menu_page'             => 'themes.php',
+// 		// decides whether to automatically name menus or not
+// 		'use_auto_group_naming' => true,
+// 		// show (by default) or hide the "Export/Import" page
+// 		'use_exim_menu'         => true,
+// 		// minimum user role to view the options panel
+// 		'minimum_role'          => 'edit_theme_options',
+// 		// type of the layout (fixed by default)
+// 		'layout'                => 'fixed',
+// 		// title of the options page
+// 		'page_title'            => __( 'Theme Options', 'customtheme' ),
+// 		// title of the main menu item
+// 		'menu_label'            => __( 'Theme Options', 'customtheme' ),
+// 	));
+// }
+// add_action( 'after_setup_theme', 'customtheme_vafpress_options' );

@@ -1,4 +1,4 @@
-# git ignore
+# gitignore
 _offline
 .htaccess
 template-bootstrap-*
@@ -6,6 +6,8 @@ css/main.min.css.map
 
 # Prepros
 prepros.cfg
+*.css.map
+*.js.map
 
 # Vafpress
 vafpress/
