@@ -117,6 +117,10 @@ code {
 
 /* WordPress styles
 -------------------------------------------------- */
+#comments {
+    width: 100%;
+}
+
 #commentform code {
     white-space: pre-line !important;
 }

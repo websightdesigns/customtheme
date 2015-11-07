@@ -6,8 +6,6 @@ css/main.min.css.map
 
 # Prepros
 prepros.cfg
-*.css.map
-*.js.map
 
 # Vafpress
 vafpress/
