@@ -168,7 +168,7 @@ if ( ! function_exists( 'customtheme_scripts' ) ) :
 
 		// Add the theme stylesheet
 		if($hostname_match) {
-			wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/style.css', array('customtheme-style'), '1.0' );
+			wp_enqueue_style( 'customtheme-style', get_template_directory_uri() . '/style.css', array('customtheme-style'), '1.0' );
 		} else {
 			wp_enqueue_style( 'customtheme-style', get_template_directory_uri() . '/style.min.css', array('customtheme-style'), '1.0' );
 		}
