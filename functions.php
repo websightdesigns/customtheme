@@ -167,7 +167,11 @@ if ( ! function_exists( 'customtheme_scripts' ) ) :
 		else $hostname_match = false;
 
 		// Add the theme stylesheet
-		wp_enqueue_style( 'customtheme-style', get_stylesheet_uri() );
+		if($hostname_match) {
+			wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/style.css', array('customtheme-style'), '1.0' );
+		} else {
+			wp_enqueue_style( 'customtheme-style', get_template_directory_uri() . '/style.min.css', array('customtheme-style'), '1.0' );
+		}
 
 		// Add the navigation script
 		wp_enqueue_script( 'customtheme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
